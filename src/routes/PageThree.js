@@ -239,12 +239,7 @@ class PageThree extends Component {
                             minHeight={300}
                             id={item.id}
                         >
-                            <div>
-                                <div style={{ position: 'absolute', top: '10px', marginRight: 10, zIndex: 1000 }}>
-                                    <Icon type='arrow-left' onClick={() => this.onChartBack(item.id)} />
-                                </div>
-                                <div id={item.id}>
-                                </div>
+                            <div id={item.id}>
                             </div>
                         </Rnd>
                     })
