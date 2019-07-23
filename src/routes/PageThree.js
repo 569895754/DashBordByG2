@@ -7,6 +7,8 @@ import {Rnd} from "react-rnd";
 import Stack from '../utils/Stack';
 import {Icon} from "antd";
 
+import RightContextMenu from '../components/RightContextMenu/RightContextMenu';
+
 const style = {
     display: "flex",
     alignItems: "center",
@@ -247,6 +249,7 @@ class PageThree extends Component {
                         </Rnd>
                     })
                 }
+                <RightContextMenu chartBack={this.onChartBack} />
             </div>)
         );
     }
