@@ -64,7 +64,6 @@ class RightContextMenu extends React.Component {
     _handleClick = (event) => {
         const { visible } = this.state;
         const wasOutside = !(event.target.contains === this.root);
-        debugger
         if (event.target.textContent === '返回') {
             this.props.chartBack(this.state.chartIndex);
         }
