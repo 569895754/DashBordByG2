@@ -5,7 +5,6 @@ import './styles.less';
 class RightContextMenu extends React.Component {
     state = {
         visible: false,
-        chartIndex: '',
     };
 
     componentDidMount() {
@@ -22,10 +21,6 @@ class RightContextMenu extends React.Component {
 
     _handleContextMenu = (event) => {
         event.preventDefault();
-
-        if (event.target.localName !== 'canvas') {
-            return;
-        }
 
         this.setState({ visible: true });
 
@@ -57,16 +52,12 @@ class RightContextMenu extends React.Component {
             this.root.style.top = `${clickY - rootH - 5}px`;
         }
 
-        const chartIndex = document.getElementById(event.target.id).parentNode.parentNode.id
-        this.setState({ chartIndex });
     };
 
     _handleClick = (event) => {
         const { visible } = this.state;
         const wasOutside = !(event.target.contains === this.root);
-        if (event.target.textContent === '返回') {
-            this.props.chartBack(this.state.chartIndex);
-        }
+
         if (wasOutside && visible) this.setState({ visible: false, });
     };
 
@@ -81,7 +72,7 @@ class RightContextMenu extends React.Component {
 
         return(visible || null) &&
             <div ref={ref => {this.root = ref}} className="contextMenu">
-                <div className="contextMenu--option">返回</div>
+                { this.props.contextMenu }
             </div>
     };
 }

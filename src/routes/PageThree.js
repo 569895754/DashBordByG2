@@ -5,7 +5,6 @@ import { DropTarget } from 'react-dnd';
 import ItemTypes from '../types';
 import {Rnd} from "react-rnd";
 import Stack from '../utils/Stack';
-import {Icon} from "antd";
 
 import RightContextMenu from '../components/RightContextMenu/RightContextMenu';
 
