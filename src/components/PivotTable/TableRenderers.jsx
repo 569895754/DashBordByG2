@@ -122,13 +122,11 @@ function makeRenderer(opts = {}) {
                   {j === 0 &&
                     rowAttrs.length !== 0 && (
                       <th
-                        onClick={ () => getClickHandler && getClickHandler(pivotData) }
                         colSpan={rowAttrs.length}
                         rowSpan={colAttrs.length}
                       />
                     )}
                   <th
-                    onClick={ () => getClickHandler && getClickHandler(pivotData) }
                     className="pvtAxisLabel"
                   >
                     {c}
@@ -140,7 +138,6 @@ function makeRenderer(opts = {}) {
                     }
                     return (
                       <th
-                        onClick={ () => getClickHandler && getClickHandler(pivotData) }
                         className="pvtColLabel"
                         key={`colKey${i}`}
                         colSpan={x}
@@ -157,7 +154,6 @@ function makeRenderer(opts = {}) {
 
                   {j === 0 && (
                     <th
-                      onClick={ () => getClickHandler && getClickHandler(pivotData) }
                       className="pvtTotalLabel"
                       rowSpan={
                         colAttrs.length + (rowAttrs.length === 0 ? 0 : 1)
@@ -175,7 +171,6 @@ function makeRenderer(opts = {}) {
                 {rowAttrs.map(function(r, i) {
                   return (
                     <th
-                      onClick={ () => getClickHandler && getClickHandler(pivotData) }
                       className="pvtAxisLabel"
                       key={`rowAttr${i}`}
                     >
@@ -184,7 +179,6 @@ function makeRenderer(opts = {}) {
                   );
                 })}
                 <th
-                  onClick={ () => getClickHandler && getClickHandler(pivotData) }
                   className="pvtTotalLabel"
                 >
                   {colAttrs.length === 0 ? 'Totals' : null}
@@ -207,7 +201,6 @@ function makeRenderer(opts = {}) {
                       <th
                         key={`rowKeyLabel${i}-${j}`}
                         className="pvtRowLabel"
-                        onClick={ () => getClickHandler && getClickHandler(pivotData) }
                         rowSpan={x}
                         colSpan={
                           j === rowAttrs.length - 1 && colAttrs.length !== 0
@@ -248,7 +241,6 @@ function makeRenderer(opts = {}) {
             <tr>
               <th
                 className="pvtTotalLabel"
-                onClick={ () => getClickHandler && getClickHandler(pivotData) }
                 colSpan={rowAttrs.length + (colAttrs.length === 0 ? 0 : 1)}
               >
                 Totals
