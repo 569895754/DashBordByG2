@@ -8,6 +8,8 @@ import createPlotlyRenderers from '../components/PivotTable/PlotlyRenderers';
 import PivotTableUI from '../components/PivotTable/PivotTableUI';
 import '../components/PivotTable/pivottable.css';
 import RightContextMenu from "../components/RightContextMenu/RightContextMenu";
+import { Scrollbars } from 'react-custom-scrollbars';
+import {Rnd} from "react-rnd";
 
 const Plot = createPlotlyComponent(window.Plotly);
 
@@ -43,7 +45,10 @@ class PageTow extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            width: 700,
+            height: 400,
+        };
     }
 
     componentWillMount() {
@@ -57,7 +62,6 @@ class PageTow extends Component {
                 aggregatorName: '计数',
                 flag: 24,
                 vals: ['Tip', 'Total Bill'],
-                rendererName: '表',
                 sorters: {
                     Meal: sortAs(['Lunch', 'Dinner']),
                     'Day of Week': sortAs([
@@ -95,10 +99,48 @@ class PageTow extends Component {
         );
     };
 
+    onDivResize = (e, direction, ref, delta, position) => {
+        const width = ref.style.width.substring(0, ref.style.width.length - 2);
+        const height = ref.style.height.substring(0, ref.style.height.length - 2);
+        this.setState({
+            width: Number(width),
+            height: Number(height),
+        });
+    };
+
+    onDivResizeStop = (e, direction, ref, delta, position) => {
+        const width = ref.style.width.substring(0, ref.style.width.length - 2);
+        const height = ref.style.height.substring(0, ref.style.height.length - 2);
+        this.setState({
+            width: Number(width),
+            height: Number(height),
+        });
+    };
+
     render() {
+        const style = {
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            border: "solid 1px #ddd",
+            background: "#f0f0f0"
+        };
         return (
             <div>
-                <PivotTableUISmartWrapper {...this.state.pivotState} />
+                <Rnd
+                    style={style}
+                    onResizeStop={(e, direction, ref, delta, position) => this.onDivResizeStop(e, direction, ref, delta, position)}
+                    onResize={(e, direction, ref, delta, position) => this.onDivResize(e, direction, ref, delta, position)}
+                >
+                    <Scrollbars
+                        id='test'
+                        autoHeight
+                        autoHeightMax={this.state.height}
+                        style={{ maxWidth: this.state.width, display: 'inline-block', width: 'auto' }}
+                    >
+                        <PivotTableUISmartWrapper {...this.state.pivotState} />
+                    </Scrollbars>
+                </Rnd>
                 <RightContextMenu
                     contextMenu={this.generateMenuOption()}
                 />

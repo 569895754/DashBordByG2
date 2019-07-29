@@ -1,5 +1,7 @@
 .pvtUi {
     color: #2a3f5f;
+    margin-bottom: 7px;
+    margin-right: 7px;
     font-family: Verdana;
     border-collapse: collapse;
 }
@@ -19,8 +21,8 @@ table.pvtTable {
     font-size: 8pt;
     text-align: left;
     border-collapse: collapse;
-    margin-top: 3px;
-    margin-left: 3px;
+    /*margin-top: 3px;*/
+    /*margin-left: 3px;*/
     font-family: Verdana;
 }
 table.pvtTable thead tr th,
@@ -325,4 +327,15 @@ table.pvtTable tbody tr td {
 
 .bild {
     color: red !important;
+}
+
+.test {
+    width: 10px;
+    height: 10px;
+    background-color: red;
+}
+
+.test :after {
+    width: 3px;
+    background-color: green;
 }

@@ -512,32 +512,32 @@ class PivotTableUI extends React.PureComponent {
     );
     const outputCell = (
       <td className="pvtOutput">
-        <PivotTable
-          {...update(this.props, {
-            data: {$set: this.materializedInput},
-          })}
-        />
+          <PivotTable
+            {...update(this.props, {
+              data: {$set: this.materializedInput},
+            })}
+          />
       </td>
     );
 
     if (horizUnused) {
       return (
-        <table className="pvtUi">
-          <tbody onClick={() => this.setState({openDropdown: false})}>
-            {/*<tr>*/}
-              {/*{rendererCell}*/}
-              {/*{unusedAttrsCell}*/}
-            {/*</tr>*/}
-            {/*<tr>*/}
-              {/*{aggregatorCell}*/}
-              {/*{colAttrsCell}*/}
-            {/*</tr>*/}
-            <tr>
-              {/*{rowAttrsCell}*/}
-              {outputCell}
-            </tr>
-          </tbody>
-        </table>
+          <table className="pvtUi">
+            <tbody onClick={() => this.setState({openDropdown: false})}>
+              {/*<tr>*/}
+                {/*{rendererCell}*/}
+                {/*{unusedAttrsCell}*/}
+              {/*</tr>*/}
+              {/*<tr>*/}
+                {/*{aggregatorCell}*/}
+                {/*{colAttrsCell}*/}
+              {/*</tr>*/}
+              <tr>
+                {/*{rowAttrsCell}*/}
+                {outputCell}
+              </tr>
+            </tbody>
+          </table>
       );
     }
 
